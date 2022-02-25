@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: go-fiber-clone
+    environment:
+      - APP_ENV=dev
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    volumes:
+      - "./:/etc/go-fiber-clone"
+    ports:
+      - 8080:8080
+    networks:
+      - go-fiber-clone-service-network
+
+networks:
+  go-fiber-clone-service-network:

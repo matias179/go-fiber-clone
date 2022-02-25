@@ -1,0 +1,17 @@
+# terraform
+.terraform/
+*.tfplan
+*.tfstate
+*.hcl
+
+# IDEs, Editors
+.idea/
+.vscode
+.run
+
+# misc
+.DS_Store
+go-fiber-clone.iml
+
+# Air
+tmp/
