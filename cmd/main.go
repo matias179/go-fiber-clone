@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"os"
+
+	"github.com/matias179/go-fiber-clone/internal/server/http"
 
 	"github.com/joho/godotenv"
 )
@@ -21,5 +22,5 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("Hello World!")
+	http.New()
 }

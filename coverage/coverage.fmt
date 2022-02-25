@@ -1,1 +1,5 @@
 mode: set
+github.com/matias179/go-fiber-clone/internal/config/config.go:24.29,26.17 2 1
+github.com/matias179/go-fiber-clone/internal/config/config.go:30.2,30.26 1 1
+github.com/matias179/go-fiber-clone/internal/config/config.go:26.17,28.3 1 0
+github.com/matias179/go-fiber-clone/internal/config/config.go:34.32,39.2 1 1
