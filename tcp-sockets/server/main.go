@@ -60,7 +60,12 @@ func handleConnection(conn net.Conn) {
 	log.Println("Client message:", string(buffer[:len(buffer)-1]))
 
 	// Send response message to the client.
-	conn.Write(buffer)
+	_, err = conn.Write(buffer)
+	if err != nil {
+		fmt.Println("Error writing buffer.")
+		conn.Close()
+		return
+	}
 
 	// Restart the process.
 	handleConnection(conn)

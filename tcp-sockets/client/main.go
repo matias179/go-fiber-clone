@@ -36,7 +36,12 @@ func main() {
 		input, _ := reader.ReadString('\n')
 
 		// Send to socket connection.
-		conn.Write([]byte(input))
+		_, err = conn.Write([]byte(input))
+		if err != nil {
+			fmt.Println("Error writing buffer.")
+			conn.Close()
+			return
+		}
 
 		// Listen for relay.
 		message, _ := bufio.NewReader(conn).ReadString('\n')
