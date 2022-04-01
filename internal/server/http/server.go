@@ -60,13 +60,21 @@ func handleConnection(conn net.Conn) {
 	// primitive parse of URI from string
 	regExp := regexp.MustCompile(`\/\w+`)
 	URI := regExp.FindAllString(URIDetails, 1)
-	for _, v := range URI {
-		switch v {
+	if URI[0] != "" {
+		body := `<h2>Default response</h2>`
+		switch URI[0] {
 		case "/hello":
-			conn.Write([]byte("Hello, World 👋!"))
+			body = `<h2>Hello, World!</h2>`
 		case "/test":
-			conn.Write([]byte("Keep trying"))
+			body = `<h2>Keep trying</h2>`
+		default:
+			//conn.Write([]byte("Default response"))
 		}
+		fmt.Fprint(conn, "HTTP/1.1 200 OK\r\n")
+		fmt.Fprintf(conn, "Content-Length: %d\r\n", len(body))
+		fmt.Fprint(conn, "Content-Type: text/html\r\n")
+		fmt.Fprint(conn, "\r\n")
+		fmt.Fprint(conn, body)
 	}
 	conn.Close()
 }
